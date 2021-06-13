@@ -11,6 +11,12 @@ body, html{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 16px;
     overflow-x: hidden;
+    background-size: contain;
+    background-image: url(../images/bg-pattern-desktop.svg);
+    background-repeat: no-repeat; 
+    @media (min-width: 1025px) {
+    background-size: 60% 100%;
+    }
 }
 
 // END OF COMMON
@@ -130,6 +136,9 @@ body, html{
             &::placeholder{
                 color: @desaturatedRed;
             }
+            &:focus{
+                outline: none;
+            }
         }
         .cta__button{
             height: 52px;
@@ -140,6 +149,7 @@ body, html{
             border: none;
             background-image: linear-gradient(135deg,  hsl(0, 80%, 86%),hsl(0, 74%, 74%));
             cursor: pointer;  
+            z-index: 2;
             &:hover{
                 background-image: linear-gradient(135deg,  hsl(0, 74%, 74%),hsl(0, 77%, 54%)); 
             }
@@ -152,16 +162,17 @@ body, html{
                 box-sizing: border-box;
             }
         }
-    }
-    .error__icon{
-        position: absolute;
-        top: 50%;
-        right: 65px;
-        transform: translate(-50%,-50%);
-        z-index: 1;
-        @media (min-width: 1025px) {
-            right: 85px;
-        }        
+        .error__icon{
+            position: absolute;
+            top: 50%;
+            right: 65px;
+            transform: translate(-50%,-50%);
+            z-index: 1;
+            visibility: hidden;
+            @media (min-width: 1025px) {
+                right: 85px;
+            }
+        }
     }
     .error-message{
         width: 240px;
@@ -171,6 +182,7 @@ body, html{
         color: @softRed;
         box-sizing: border-box;
         grid-area: error-message;
+        visibility: hidden;
         @media (min-width: 360px) {
             width: 310px;                
         }
@@ -178,6 +190,10 @@ body, html{
             margin: .7rem 0 0 32px;
         }
     }
+    .error{
+        visibility: visible;
+    }
 }
+
 
 // END OF HERO
