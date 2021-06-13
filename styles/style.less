@@ -17,26 +17,65 @@ body, html{
 
 // HERO
 
-.hero__container{    
+.hero__container{      
     margin: 0 auto;
+    @media (min-width: 1025px) {
+        height: 100vh; 
+        display: grid; 
+        grid-auto-rows: 1fr; 
+        grid-template-columns: 100px 7fr 9fr 3fr 10fr auto; 
+        grid-template-rows: 1fr 2fr 2fr 13fr 4fr 1fr 5fr; 
+        gap: 0px 0px; 
+        grid-template-areas: 
+            ". . . . . photo-container"
+            ". logo-container . . . photo-container"
+            ". . . . . photo-container"
+            ". text-container text-container text-container . photo-container"
+            ". form-container form-container form-container . photo-container"
+            ". error-message error-message error-message . photo-container"
+            ". . . . . photo-container";
+    
+    }
     .logo-container{
-        height: 85px;       
+        height: 85px;    
+        grid-area: logo-container;
         .logo{
             width: 100px;
             padding: 2rem;
+            @media (min-width: 1025px) {
+                width: 140px;
+            } 
         }        
     }
     .photo-container{
         max-width: 100vw;
         overflow: hidden;
-        .photo{
+        grid-area: photo-container;
+        .photo--mobile{
             width: 100%;
+            @media (min-width: 1025px) {
+                display: none;
+            }
+        }
+        .photo--desktop{
+            display: none;
+            width: 100%;
+            @media (min-width: 1025px) {
+                display: block;
+            }
         }
     }
     .text-container{
         width: 80%;
         margin: 0 auto;
         text-align: center;
+        grid-area: text-container;
+        @media (min-width: 1025px) {
+            width: 100%;
+            margin: 0 0 0 32px;
+            padding-top: 0;
+            text-align: left;
+        }
         .hero__header{
             margin-bottom: 0;
             padding-top: 1.4rem;
@@ -49,23 +88,36 @@ body, html{
                 color: @darkGrayishRed;
                 font-weight: 700;
             }
+            @media (min-width: 1025px) {
+                padding: 0 0 1rem 0;
+                font-size: 3.5rem;
+            }
         }
         .hero__description{
             margin: 0;
             padding-top: 0.8rem;
             color: @desaturatedRed;
             line-height: 1.3rem;
+            @media (min-width: 1025px) {
+                font-size: 17px;
+            }
+            
         }
     }
     .form-container{
         display: flex;
+        position: relative;
         justify-content: center;
         align-items: center;
-        margin: 2.3rem auto 2rem auto;
         width: 240px;
-        position: relative;
+        margin: 2.3rem auto 2rem auto;
+        grid-area: form-container;
         @media (min-width: 360px) {
             width: 310px;                
+        }
+        @media (min-width: 1025px) {
+            width: 100%;
+            margin: 2rem 0 0 32px;
         }
         .input{
             width: 100%;
@@ -87,7 +139,13 @@ body, html{
             outline: none;
             border: none;
             background-image: linear-gradient(135deg,  hsl(0, 80%, 86%),hsl(0, 74%, 74%));
-            cursor: pointer;
+            cursor: pointer;  
+            &:hover{
+                background-image: linear-gradient(135deg,  hsl(0, 74%, 74%),hsl(0, 77%, 54%)); 
+            }
+            @media (min-width: 1025px) {
+                width: 85px;
+            }
             img{
                 height: 100%;                
                 padding: 12px;
@@ -101,6 +159,9 @@ body, html{
         right: 65px;
         transform: translate(-50%,-50%);
         z-index: 1;
+        @media (min-width: 1025px) {
+            right: 85px;
+        }        
     }
     .error-message{
         width: 240px;
@@ -108,10 +169,13 @@ body, html{
         padding-left: 25px;
         font-size: 13.3333px;
         color: @softRed;
-        visibility: visible;
         box-sizing: border-box;
+        grid-area: error-message;
         @media (min-width: 360px) {
             width: 310px;                
+        }
+        @media (min-width: 1025px) {
+            margin: .7rem 0 0 32px;
         }
     }
 }
