@@ -61,19 +61,20 @@ body, html{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 2.3rem;
-        margin-bottom: 2rem;
+        margin: 2.3rem auto 2rem auto;
+        width: 240px;
+        position: relative;
+        @media (min-width: 360px) {
+            width: 310px;                
+        }
         .input{
-            width: 240px;
+            width: 100%;
             height: 52px;
             padding: 1rem 1rem 1rem 1.5rem;
             color: @desaturatedRed;
             border: 1px solid @desaturatedRed;
             border-radius: 26px;
             box-sizing: border-box;
-            @media (min-width: 360px) {
-                width: 310px;                
-            }
             &::placeholder{
                 color: @desaturatedRed;
             }
@@ -94,10 +95,17 @@ body, html{
             }
         }
     }
+    .error__icon{
+        position: absolute;
+        top: 50%;
+        right: 65px;
+        transform: translate(-50%,-50%);
+        z-index: 1;
+    }
     .error-message{
         width: 240px;
         margin: -20px auto 2rem auto;
-        padding-left: 24px;
+        padding-left: 25px;
         font-size: 13.3333px;
         color: @softRed;
         visibility: visible;
